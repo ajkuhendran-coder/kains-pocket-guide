@@ -635,6 +635,72 @@
   .score-value { font-weight: 800; font-size: 16px; min-width: 40px; text-align: center;
     padding: 2px 8px; border-radius: 6px; color: white; }
 
+  /* ===== SOP IMAGES ===== */
+  .sop-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 8px 0;
+    cursor: zoom-in;
+    background: white;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+  }
+  .sop-img:active { opacity: 0.85; }
+  .sop-img-caption {
+    font-size: 12px;
+    color: var(--gray);
+    margin: 4px 0 12px;
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* ===== LIGHTBOX ===== */
+  .lightbox {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 9999;
+    display: none;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pinch-zoom;
+  }
+  .lightbox.open { display: block; }
+  .lightbox-img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    padding: 50px 8px 30px;
+  }
+  .lightbox-close {
+    position: fixed;
+    top: calc(env(safe-area-inset-top, 12px) + 8px);
+    right: 12px;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border: none;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10000;
+    -webkit-tap-highlight-color: rgba(255,255,255,0.2);
+  }
+  .lightbox-close:active { background: rgba(255,255,255,0.3); }
+  .lightbox-hint {
+    position: fixed;
+    bottom: calc(env(safe-area-inset-bottom, 12px) + 8px);
+    left: 0; right: 0;
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    pointer-events: none;
+  }
+
   /* ===== DARK MODE ===== */
   @media (prefers-color-scheme: dark) {
     body { background: #1c1c1e; color: #f2f2f7; }
@@ -5097,6 +5163,7 @@
     <a href="#po-isk" onclick="openAndScroll('po-isk')">Interskalenaer</a>
     <a href="#po-nsb" onclick="openAndScroll('po-nsb')">N. suprasc.</a>
     <a href="#po-erg" onclick="openAndScroll('po-erg')">Komplettierung</a>
+    <a href="#po-sono" onclick="openAndScroll('po-sono')">&#129714; Sono-Bilder</a>
   </nav>
 
   <div class="content">
@@ -5240,6 +5307,22 @@
   </div>
 </div>
 
+<div class="section" id="po-sono">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="badge badge-info">SONO</span>
+    <h2>Sonographie & Anhang</h2>
+    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="section-body">
+    <div class="subsection-title">Axillaer + ISK (Bilder 1-3)</div>
+    <img class="sop-img" src="images/plexob-anhang-6.png" alt="Sono-Bilder Axillaer + Interskalenaer" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+    <div class="sop-img-caption">Tippen zum Vergroessern</div>
+    <div class="subsection-title">N. suprascapularis (Bilder 4-5)</div>
+    <img class="sop-img" src="images/plexob-anhang-7.png" alt="N. suprascapularis Sondenposition + Sono" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+    <div class="sop-img-caption">Sondenposition + Sonoanatomie NSB</div>
+  </div>
+</div>
+
   </div>
   <div class="footer">
     RKH Gesundheit | FSK Bruchsal / RBK<br>
@@ -5268,6 +5351,7 @@
     <a href="#pu-ischiad" onclick="openAndScroll('pu-ischiad')">N. ischiadicus</a>
     <a href="#pu-fuss" onclick="openAndScroll('pu-fuss')">Fussblock</a>
     <a href="#pu-fascia" onclick="openAndScroll('pu-fascia')">Fascia iliaca</a>
+    <a href="#pu-sono" onclick="openAndScroll('pu-sono')">&#129714; Sono</a>
   </nav>
 
   <div class="content">
@@ -5413,6 +5497,18 @@
   </div>
 </div>
 
+<div class="section" id="pu-sono">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="badge badge-info">SONO</span>
+    <h2>Sonographie & Anatomie Fascia iliaca</h2>
+    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="section-body">
+    <img class="sop-img" src="images/plexun-fascia-5.png" alt="Schemazeichnung Querschnitt + Sonoanatomie Fascia iliaca" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+    <div class="sop-img-caption">Tippen zum Vergroessern &middot; Querschnitt-Schema + Sonoanatomie Fascia-iliaca-Block</div>
+  </div>
+</div>
+
   </div>
   <div class="footer">
     RKH Gesundheit | FSK Bruchsal / RBK<br>
@@ -5440,6 +5536,7 @@
     <a href="#rk-ikb" onclick="openAndScroll('rk-ikb')">Interkostal</a>
     <a href="#rk-leiste" onclick="openAndScroll('rk-leiste')">Leiste</a>
     <a href="#rk-cfl" onclick="openAndScroll('rk-cfl')">N.cut.fem.lat.</a>
+    <a href="#rk-sono" onclick="openAndScroll('rk-sono')">&#129714; Sono</a>
   </nav>
 
   <div class="content">
@@ -5558,6 +5655,28 @@
       <div class="med-dose"><strong>3-5 ml LA</strong></div>
       <div class="med-note">Schmerzther.: zusaetzl. Dexamethason 8 mg / 2 ml</div>
     </div>
+  </div>
+</div>
+
+<div class="section" id="rk-sono">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="badge badge-info">SONO</span>
+    <h2>Sondenposition & Sonoanatomie</h2>
+    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="section-body">
+    <div class="subsection-title">Leiste - Sondenposition Ilioinguinalis/Iliohypogastricus</div>
+    <img class="sop-img" src="images/rakorp-anhang-5.png" alt="Sondenposition Leiste" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+    <div class="sop-img-caption">Schallkopfposition fuer ilioinguin./hypogastr. Block</div>
+    <div class="subsection-title">Leiste - Sonoanatomie + Punktion (Abb. 2)</div>
+    <img class="sop-img" src="images/rakorp-anhang-6.png" alt="Sonoanatomie Leiste" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+    <div class="sop-img-caption">Identifikation EOm/IOm/TAm + In-plane-Punktion + Sondenposition genitofemoralis</div>
+    <div class="subsection-title">N. genitofemoralis + N. cutaneus femoris lat.</div>
+    <img class="sop-img" src="images/rakorp-anhang-7.png" alt="N. genitofemoralis Sonoanatomie + LFCN" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+    <div class="sop-img-caption">Samenstrang/Vas deferens + LFCN-Block-Sonoanatomie</div>
+    <div class="subsection-title">N. cutaneus femoris lateralis - Sondenposition</div>
+    <img class="sop-img" src="images/rakorp-anhang-8.png" alt="LFCN Sondenposition" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+    <div class="sop-img-caption">In-plane Approach lateral &rarr; medial</div>
   </div>
 </div>
 
@@ -5855,6 +5974,7 @@
   </div>
 
   <nav class="quick-nav rust-nav">
+    <a href="#hk-algo" onclick="openAndScroll('hk-algo')">&#128202; Algorithmus</a>
     <a href="#hk-stuf" onclick="openAndScroll('hk-stuf')">Schweregrade</a>
     <a href="#hk-erst" onclick="openAndScroll('hk-erst')">Erstmassnahmen</a>
     <a href="#hk-memb" onclick="openAndScroll('hk-memb')">Membran-Schutz</a>
@@ -5864,7 +5984,19 @@
 
   <div class="content">
 
-<div class="section open" id="hk-stuf">
+<div class="section open" id="hk-algo">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="badge badge-warn">FLOW</span>
+    <h2>Algorithmus (Original-SOP)</h2>
+    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="section-body">
+    <img class="sop-img" src="images/hyperk-algo-3.png" alt="Hyperkaliaemie Therapie-Algorithmus" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+    <div class="sop-img-caption">Tippen zum Vergroessern &middot; Originalseite KLK D00640</div>
+  </div>
+</div>
+
+<div class="section" id="hk-stuf">
   <div class="section-header" onclick="toggleSection(this)">
     <span class="badge badge-warn">STUFEN</span>
     <h2>Schweregradeinteilung</h2>
@@ -6019,6 +6151,7 @@
   </div>
 
   <nav class="quick-nav sky-nav">
+    <a href="#hn-algo" onclick="openAndScroll('hn-algo')">&#128202; Algorithmus</a>
     <a href="#hn-diag" onclick="openAndScroll('hn-diag')">Diagnose</a>
     <a href="#hn-cpm" onclick="openAndScroll('hn-cpm')">CPM-Risiko</a>
     <a href="#hn-akut" onclick="openAndScroll('hn-akut')">Akut</a>
@@ -6028,7 +6161,19 @@
 
   <div class="content">
 
-<div class="section open" id="hn-diag">
+<div class="section open" id="hn-algo">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="badge badge-warn">FLOW</span>
+    <h2>Diagnose-/Therapie-Algorithmus</h2>
+    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="section-body">
+    <img class="sop-img" src="images/hypon-algo-3.png" alt="Hyponatriaemie Diagnose-/Therapie-Algorithmus" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+    <div class="sop-img-caption">Tippen zum Vergroessern &middot; Diagnostik & Therapie chron. Hyponatriaemien</div>
+  </div>
+</div>
+
+<div class="section" id="hn-diag">
   <div class="section-header" onclick="toggleSection(this)">
     <span class="badge badge-warn">DIAG.</span>
     <h2>Diagnose & Einteilung</h2>
@@ -6376,6 +6521,7 @@
   </div>
 
   <nav class="quick-nav dark-nav">
+    <a href="#pr-algo" onclick="openAndScroll('pr-algo')">&#128202; ERC-Charts</a>
     <a href="#pr-diag" onclick="openAndScroll('pr-diag')">Diagnostik</a>
     <a href="#pr-monit" onclick="openAndScroll('pr-monit')">Monitoring</a>
     <a href="#pr-haemo" onclick="openAndScroll('pr-haemo')">Haemodynamik</a>
@@ -6385,7 +6531,26 @@
 
   <div class="content">
 
-<div class="section open" id="pr-diag">
+<div class="section open" id="pr-algo">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="badge badge-warn">ERC 2025</span>
+    <h2>Flow Charts (ERC 2025)</h2>
+    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="section-body">
+    <div class="subsection-title">Immediate Treatment</div>
+    <img class="sop-img" src="images/postreani-immediate-2.png" alt="Immediate Treatment Flow Chart" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+    <div class="sop-img-caption">Airway, Breathing, Circulation, Diagnostik</div>
+    <div class="subsection-title">ICU Management / Optimising Recovery</div>
+    <img class="sop-img" src="images/postreani-icu-5.png" alt="ICU Management Flow Chart" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+    <div class="sop-img-caption">72h Fieber-Vermeidung, MAP, Glykaemie, Echo</div>
+    <div class="subsection-title">Multimodal Prognose-Assessment</div>
+    <img class="sop-img" src="images/postreani-prog-6.png" alt="Multimodal Assessment" loading="lazy" onclick="openLightbox(this.src, this.alt)">
+    <div class="sop-img-caption">Klinik, EEG, SSEP, NSE, Bildgebung &uuml;ber Day 1-7</div>
+  </div>
+</div>
+
+<div class="section" id="pr-diag">
   <div class="section-header" onclick="toggleSection(this)">
     <span class="badge badge-warn">DIAG.</span>
     <h2>Diagnostik nach ROSC</h2>
@@ -6554,6 +6719,16 @@
 
 
 <!-- ================================================================== -->
+<!-- LIGHTBOX                                                           -->
+<!-- ================================================================== -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Schliessen">&#10005;</button>
+  <img class="lightbox-img" id="lightbox-img" alt="">
+  <div class="lightbox-hint">Pinch zum Zoomen &middot; Tippen zum Schliessen</div>
+</div>
+
+
+<!-- ================================================================== -->
 <!-- BOTTOM TAB BAR                                                     -->
 <!-- ================================================================== -->
 <nav class="tab-bar">
@@ -6608,6 +6783,22 @@ var pageLabels = {
 function toggleSection(header) {
   var section = header.parentElement;
   section.classList.toggle('open');
+}
+
+// Lightbox
+function openLightbox(src, alt) {
+  var lb = document.getElementById('lightbox');
+  var img = document.getElementById('lightbox-img');
+  img.src = src;
+  img.alt = alt || '';
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+  if (e) e.stopPropagation();
+  var lb = document.getElementById('lightbox');
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 // Page switching
